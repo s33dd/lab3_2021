@@ -24,10 +24,6 @@ std::string FileWork::ChangeName(void) {
 	return m_path;
 }
 
-//std::string FileWork::GetName() {
-//	return m_path;
-//}
-
 bool FileWork::FileExist(void) {
 	std::ifstream CheckFile;
 	CheckFile.open(m_path);
