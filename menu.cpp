@@ -3,7 +3,7 @@
 
 void StartInformation() {
 	std::cout << "________________________" << std::endl;
-	std::cout << "Лабораторная работа по программированию №2" << std::endl;
+	std::cout << "Лабораторная работа по программированию №3" << std::endl;
 	std::cout << "________________________" << std::endl;
 	std::cout << "Вариант 25" << std::endl;
 	std::cout << "________________________" << std::endl;
