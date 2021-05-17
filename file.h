@@ -16,9 +16,6 @@ public:
 
 	std::string ChangeName(void);
 
-	//Получение имени файла
-	//std::string GetName();
-
 	bool FileExist(void);
 
 	bool SaveFileNormal(void);

@@ -18,8 +18,6 @@ public:
 
 	void SetElement(int row, int column, int number);
 
-	//int operator[](int index);
-
 	friend class FileInput;
 
 	friend class FileOutput;
