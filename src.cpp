@@ -56,6 +56,8 @@ int main(void) {
 				std::cout << "Введите новое имя файла:" << std::endl;
 				filePath = input.ChangeName();
 				dataReaded = input.InputSize(sizes);
+				rows = sizes[ROWS];
+				columns = sizes[COLUMNS];
 			}
 			while ((rows <= 0) && (columns <= 0)) {
 				std::cout << "Количество строк и/или столбцов равняется нулю!" << std::endl;
