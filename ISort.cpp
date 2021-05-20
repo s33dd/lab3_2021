@@ -150,9 +150,12 @@ void InsertionSort::SortMatrix(Matrix &matrix) {
 		for (int i = 0; i < matrix.m_matrixRows - 1; i++) {
 			compare = i + 1;
 			temp = matrix.m_matrix[compare][j];
-			for (int next = i + 1; next > 0; next--) {
+			bool switched = true;
+			for (int next = i + 1; ((next > 0) && (switched == true)); next--) {
+				switched = false;
 				m_compareCounter++;
 				if (matrix.m_matrix[next - 1][j] < temp) {
+					switched = true;
 					m_switchCounter++;
 					matrix.m_matrix[next][j] = matrix.m_matrix[next - 1][j];
 					compare = next-1;
@@ -175,9 +178,12 @@ void InsertionSort::SortNumber(Matrix &matrix) {
 			for (__int64 k = 0; k < digits - 1; k++) {
 				compare = k + 1;
 				temp = number[compare];
-				for (__int64 next = k + 1; next > 0; next--) {
+				bool switched = true;
+				for (__int64 next = k + 1; ((next > 0) && (switched == true)); next--) {
+					switched = false;
 					m_compareCounter++;
 					if (number[next - 1] > temp) {
+						switched = true;
 						m_switchCounter++;
 						number[next] = number[next - 1];
 						compare = next - 1;
@@ -218,9 +224,12 @@ void ShellSort::SortMatrix(Matrix &matrix) {
 	while (distance > 0) {
 		for (int j = 0; j < matrix.m_matrixColumns; j++) {
 			for (int i = 0; i < matrix.m_matrixRows - distance; i++) {
-				for (int k = i; k >= 0; k--) {
+				bool switched = true;
+				for (int k = i; ((k >= 0) && (switched == true)); k--) {
+					switched = false;
 					m_compareCounter++;
 					if (matrix.m_matrix[k][j] < matrix.m_matrix[k + distance][j]) {
+						switched = true;
 						m_switchCounter++;
 						temp = matrix.m_matrix[k + distance][j];
 						matrix.m_matrix[k + distance][j] = matrix.m_matrix[k][j];
@@ -246,9 +255,13 @@ void ShellSort::SortNumber(Matrix &matrix) {
 			distance /= 2;
 			while (distance > 0) {
 				for (__int64 k = 0; k < digits - distance; k++) {
-					for (__int64 z = k; z >= 0; z--) {
+					bool switched = true;
+					for (__int64 z = k; ((z >= 0) && (switched == true)); z--) {
+						switched = false;
 						m_compareCounter++;
 						if (number[z] > number[z + distance]) {
+							switched = true;
+							m_switchCounter++;
 							temp = number[z];
 							number[z] = number[z + distance];
 							number[z + distance] = temp;
