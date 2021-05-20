@@ -10,17 +10,17 @@
 class FileWork {
 	std::string m_path;
 public:
-	FileWork(std::string path);
+	explicit FileWork(std::string path);
 
-	bool NameForbidden(void);
+	bool NameForbidden(void) const;
 
 	std::string ChangeName(void);
 
-	bool FileExist(void);
+	bool FileExist(void) const;
 
-	bool SaveFileNormal(void);
-
-	bool FileReadOnly();
+	bool SaveFileNormal(void) const;
+	
+	bool FileReadOnly(void) const;
 };
 
 #endif // !FILE_H

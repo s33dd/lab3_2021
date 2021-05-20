@@ -13,11 +13,11 @@ enum Characteristics {
 class FileInput {
 	std::string m_path;
 public:
-	FileInput(std::string path);
+	explicit FileInput(std::string path);
 
-	bool InputSize(int *sizes);
+	bool InputSize(int *sizes) const;
 
-	bool InputMatrix(Matrix &matrix);
+	bool InputMatrix(Matrix &matrix) const;
 
 	std::string ChangeName(void);
 };

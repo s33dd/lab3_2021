@@ -4,7 +4,7 @@ FileInput::FileInput(std::string path) {
 	m_path = path;
 }
 
-bool FileInput::InputSize(int *sizes) {
+bool FileInput::InputSize(int *sizes) const {
 	std::ifstream inputFile;
 	inputFile.open(m_path);
 	sizes[ROWS] = 0;
@@ -25,7 +25,7 @@ bool FileInput::InputSize(int *sizes) {
 	return true;
 }
 
-bool FileInput::InputMatrix(Matrix &matrix) {
+bool FileInput::InputMatrix(Matrix &matrix) const {
 	std::ifstream inputFile;
 	inputFile.open(m_path);
 	std::string data;

@@ -30,10 +30,10 @@ Matrix::Matrix(Matrix& matrix) {
 	}
 }
 
-int Matrix::GetElement(int row, int column) {
+int Matrix::GetElement(int row, int column) const {
 	return m_matrix[row][column];
 }
 
-void Matrix::SetElement(int row, int column, int number) {
+void Matrix::SetElement(int row, int column, int number) const {
 	m_matrix[row][column] = number;
 }

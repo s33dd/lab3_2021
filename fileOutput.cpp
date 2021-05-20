@@ -4,7 +4,7 @@ FileOutput::FileOutput(std::string path) {
 	m_path = path;
 }
 
-void FileOutput::Output(Matrix &original, Matrix &sorted, int *compares, int *switches, std::string *names) {
+void FileOutput::Output(Matrix &original, Matrix &sorted, int *compares, int *switches, std::string *names) const {
 	std::ofstream outputFile;
 	outputFile.open(m_path);
 	outputFile << "¬ведЄнна€ матрица: " << std::endl;
@@ -67,14 +67,15 @@ void FileOutput::Output(Matrix &original, Matrix &sorted, int *compares, int *sw
 	outputFile.close();
 }
 
-void FileOutput::SaveData(Matrix &original) {
+void FileOutput::SaveData(Matrix &matrix) const
+{
 	std::ofstream dataFile;
 	dataFile.open(m_path);
-	dataFile << original.m_matrixRows << std::endl;
-	dataFile << original.m_matrixColumns << std::endl;
-	for (int i = 0; i < original.m_matrixRows; i++) {
-		for (int j = 0; j < original.m_matrixColumns; j++) {
-			dataFile << original.m_matrix[i][j] << std::endl;;
+	dataFile << matrix.m_matrixRows << std::endl;
+	dataFile << matrix.m_matrixColumns << std::endl;
+	for (int i = 0; i < matrix.m_matrixRows; i++) {
+		for (int j = 0; j < matrix.m_matrixColumns; j++) {
+			dataFile << matrix.m_matrix[i][j] << std::endl;;
 		}
 	}
 	dataFile.close();

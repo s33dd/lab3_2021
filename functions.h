@@ -15,4 +15,3 @@ enum Sorts {
 void MakeSorts(Matrix &matrix, int *compares, int *switches);
 
 #endif // !FUNCTIONS_H
-

@@ -1,6 +1,6 @@
 #include "manualInput.h"
 
-void ManualInput::Input(Matrix &matrix) {
+void ManualInput::Input(Matrix &matrix) const {
 	for (int i = 0; i < matrix.m_matrixRows; i++) {
 		for (int j = 0; j < matrix.m_matrixColumns; j++) {
 			std::cout << "¬ведите элемент матрицы:" << std::endl;

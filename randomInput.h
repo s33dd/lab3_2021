@@ -17,7 +17,7 @@ class RandomInput {
 public:
 	RandomInput(void);
 
-	void Input(Matrix &matrix);
+	void Input(Matrix &matrix) const;
 };
 
 #endif // !RANDOMINPUT_H

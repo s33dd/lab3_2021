@@ -4,12 +4,12 @@ FileWork::FileWork(std::string path) {
 	m_path = path;
 }
 
-bool FileWork::NameForbidden(void) {
-	bool isNameNormal = false;
+bool FileWork::NameForbidden(void) const {
 	try {
+		bool isNameNormal = false;
 		isNameNormal = std::filesystem::is_regular_file(m_path);
 	}
-	catch (std::exception) {
+	catch (std::exception&) {
 		std::cout << "Недопустимое имя файла!" << std::endl;
 		return true;
 	}
@@ -24,11 +24,11 @@ std::string FileWork::ChangeName(void) {
 	return m_path;
 }
 
-bool FileWork::FileExist(void) {
-	std::ifstream CheckFile;
-	CheckFile.open(m_path);
-	if (CheckFile.is_open()) {
-		CheckFile.close();
+bool FileWork::FileExist(void) const {
+	std::ifstream checkFile;
+	checkFile.open(m_path);
+	if (checkFile.is_open()) {
+		checkFile.close();
 		return true;
 	}
 	else {
@@ -36,7 +36,7 @@ bool FileWork::FileExist(void) {
 	}
 }
 
-bool FileWork::SaveFileNormal(void) {
+bool FileWork::SaveFileNormal(void) const {
 	bool fileCreated = false;
 	if (NameForbidden()) { //Если имя запрещено, то нет смысла пытаться создавать файл
 		return false;
@@ -66,7 +66,7 @@ bool FileWork::SaveFileNormal(void) {
 	return true;
 }
 
-bool FileWork::FileReadOnly() {
+bool FileWork::FileReadOnly(void) const {
 	std::ofstream outputFile;
 	outputFile.open(m_path);
 	if (outputFile.is_open()) {

@@ -8,18 +8,18 @@
 int main(void) {
 	setlocale(LC_ALL, "Russian");
 
-	MENU wantTests = MENU::YES;
-	MENU wantContinue = MENU::YES;
-	MENU wantSave = MENU::YES;
-	MENU wantRewrite = MENU::YES;
-	INPUT_TYPE inputType = INPUT_TYPE::RANDOM;
+	auto wantTests = Menu::YES;
+	auto wantContinue = Menu::YES;
+	auto wantSave = Menu::YES;
+	auto wantRewrite = Menu::YES;
+	auto inputType = InputType::RANDOM;
 	bool dataReaded = false;
-	int *compares = new int[SORTS_QUANTITY];
-	int *switches = new int[SORTS_QUANTITY];
-	int *sizes = new int[SIZES_QUANTITY];
+	auto compares = new int[SORTS_QUANTITY];
+	auto switches = new int[SORTS_QUANTITY];
+	auto sizes = new int[SIZES_QUANTITY];
 	sizes[ROWS] = 0;
 	sizes[COLUMNS] = 0;
-	std::string *sorts = new std::string[SORTS_QUANTITY];
+	auto sorts = new std::string[SORTS_QUANTITY];
 	sorts[BUBBLE] = "Пузырьком ";
 	sorts[SELECT] = "Выбором ";
 	sorts[INSERT] = "Вставками ";
@@ -33,14 +33,14 @@ int main(void) {
 		int columns = sizes[COLUMNS];
 
 		wantTests = ModularTestsAsk();
-		if (wantTests == MENU::YES) {
+		if (wantTests == Menu::YES) {
 			MakeTests();
 		}
 
 		//Запрос типа заполнения массива
-		inputType = (INPUT_TYPE)InputAsk();
+		inputType = InputAsk();
 
-		if (inputType == INPUT_TYPE::FILE) {
+		if (inputType == InputType::FILE) {
 			std::cout << "Введите имя файла: " << std::endl;
 			filePath = GetInput<std::string>();
 			FileWork tempFile(filePath);
@@ -81,12 +81,12 @@ int main(void) {
 
 		Matrix matrix(rows, columns);
 				
-		if (inputType == INPUT_TYPE::RANDOM) {
+		if (inputType == InputType::RANDOM) {
 			RandomInput random;
 			random.Input(matrix);
 		}
 		else {
-			if (inputType == INPUT_TYPE::FILE) {
+			if (inputType == InputType::FILE) {
 				FileInput file(filePath);
 				dataReaded = file.InputMatrix(matrix);
 				while (!dataReaded) {
@@ -113,9 +113,9 @@ int main(void) {
 		std::cout << "Сравнительная таблица:" << std::endl;
 		screen.CompareTableOutput(compares, switches, sorts);
 
-		if (inputType != INPUT_TYPE::FILE) {
+		if (inputType != InputType::FILE) {
 			wantSave = SaveInputAsk();
-			if (wantSave == MENU::YES) {
+			if (wantSave == Menu::YES) {
 				std::cout << "Введите имя файла:" << std::endl;
 				filePath = GetInput<std::string>();
 				FileWork inputSaveFile(filePath);
@@ -124,7 +124,7 @@ int main(void) {
 					filePath = inputSaveFile.ChangeName();
 				}
 				wantRewrite = RewriteAsk(filePath);
-				if (wantRewrite == MENU::YES) {
+				if (wantRewrite == Menu::YES) {
 					std::string newFilePath = filePath;
 					FileWork newInputSave(newFilePath);
 					while (newFilePath == filePath) {
@@ -150,7 +150,7 @@ int main(void) {
 		}
 
 		wantSave = OutputFileAsk();
-		if (wantSave == MENU::YES) {
+		if (wantSave == Menu::YES) {
 			std::cout << "Введите имя файла:" << std::endl;
 			filePath = GetInput<std::string>();
 			FileWork outputSaveFile(filePath);
@@ -159,7 +159,7 @@ int main(void) {
 				filePath = outputSaveFile.ChangeName();
 			}
 			wantRewrite = RewriteAsk(filePath);
-			if (wantRewrite == MENU::YES) {
+			if (wantRewrite == Menu::YES) {
 				std::string newFilePath = filePath;
 				FileWork newOutputSave(newFilePath);
 				while (newFilePath == filePath) {
@@ -184,7 +184,7 @@ int main(void) {
 		}
 
 		wantContinue = RepeatAsk();
-	} while (wantContinue == MENU::YES);
+	} while (wantContinue == Menu::YES);
 	delete[] compares;
 	delete[] switches;
 	delete[] sorts;

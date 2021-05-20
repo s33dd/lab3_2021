@@ -1,7 +1,7 @@
 #ifndef SCREENOUTPUT_H
 #define SCREENOUTPUT_H
-#define SORTS_QUANTITY 5
 
+#include "ISort.h"
 #include "menu.h"
 #include "matrix.h"
 
@@ -14,4 +14,3 @@ public:
 };
 
 #endif // !SCREENOUTPUT_H
-

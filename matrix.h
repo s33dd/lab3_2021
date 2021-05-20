@@ -14,9 +14,9 @@ public:
 
 	Matrix(Matrix &matrix);
 
-	int GetElement(int row, int column);
+	int GetElement(int row, int column) const;
 
-	void SetElement(int row, int column, int number);
+	void SetElement(int row, int column, int number) const;
 
 	friend class FileInput;
 

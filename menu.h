@@ -6,13 +6,13 @@
 //Содержит перечисления, функции и процедуры необходимые для функционирования интерфейса
 
 //Перечисление для вариантов ответа
-enum class MENU {
+enum class Menu {
 	NO = 0,
 	YES = 1
 };
 
 //Перечисление для типов заполнения
-enum class INPUT_TYPE {
+enum class InputType {
 	MANUAL = 0,
 	FILE = 1,
 	RANDOM = 2
@@ -37,16 +37,16 @@ ElementType GetInput(void) {
 
 void StartInformation(void);
 
-MENU ModularTestsAsk(void);
+Menu ModularTestsAsk(void);
 
-INPUT_TYPE InputAsk(void);
+InputType InputAsk(void);
 
-MENU SaveInputAsk(void);
+Menu SaveInputAsk(void);
 
-MENU OutputFileAsk(void);
+Menu OutputFileAsk(void);
 
-MENU RewriteAsk(std::string path);
+Menu RewriteAsk(std::string path);
 
-MENU RepeatAsk(void);
+Menu RepeatAsk(void);
 
 #endif // !MENU_H

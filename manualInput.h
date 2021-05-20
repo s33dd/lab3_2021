@@ -7,7 +7,7 @@
 //Класс для заполнения с клавиатуры
 class ManualInput {
 public:
-	void Input(Matrix &matrix);
+	void Input(Matrix &matrix) const;
 };
 
 int InputRowsSize(void);

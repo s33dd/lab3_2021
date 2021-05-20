@@ -17,8 +17,8 @@ void StartInformation() {
 	std::cout << "________________________" << std::endl << std::endl;
 }
 
-bool RightMenuChoice(MENU choice) {
-	if ((choice == MENU::NO) || (choice == MENU::YES)) {
+bool RightMenuChoice(Menu choice) {
+	if ((choice == Menu::NO) || (choice == Menu::YES)) {
 		return true;
 	}
 	else {
@@ -27,8 +27,8 @@ bool RightMenuChoice(MENU choice) {
 	}
 }
 
-bool RightInputChoice(INPUT_TYPE choice) {
-	if ((choice == INPUT_TYPE::RANDOM) || (choice == INPUT_TYPE::MANUAL) || (choice == INPUT_TYPE::FILE)) {
+bool RightInputChoice(InputType choice) {
+	if ((choice == InputType::RANDOM) || (choice == InputType::MANUAL) || (choice == InputType::FILE)) {
 		return true;
 	}
 	else {
@@ -37,62 +37,62 @@ bool RightInputChoice(INPUT_TYPE choice) {
 	}
 }
 
-MENU ModularTestsAsk(void) {
+Menu ModularTestsAsk(void) {
 	std::cout << "∆елаете выполнить модульные тесты?" << std::endl;
 	std::cout << "1 Ч ƒа / 0 Ч Ќет" << std::endl;
 	std::cout << "¬аш выбор: ";
-	MENU decision = (MENU)GetInput<int>();
+	auto decision = static_cast<Menu>(GetInput<int>());
 	while (!RightMenuChoice(decision)) {
-		decision = (MENU)GetInput<int>();
+		decision = static_cast<Menu>(GetInput<int>());
 	}
 	return decision;
 }
 
-INPUT_TYPE InputAsk(void) {
+InputType InputAsk(void) {
 	std::cout << " ак вы желаете заполнить массив?" << std::endl;
 	std::cout << "2 Ч —лучайными числами / 1 Ч »з файла / 0 Ч — клавиатуры" << std::endl;
 	std::cout << "¬аш выбор: ";
-	INPUT_TYPE decision = (INPUT_TYPE)GetInput<int>();
+	auto decision = static_cast<InputType>(GetInput<int>());
 	while (!RightInputChoice(decision)) {
-		decision = (INPUT_TYPE)GetInput<int>();
+		decision = static_cast<InputType>(GetInput<int>());
 	}
 	return decision;
 }
 
-MENU SaveInputAsk(void) {
+Menu SaveInputAsk(void) {
 	std::cout << "∆елаете сохранить исходные данные в файл?" << std::endl;
 	std::cout << "1 Ч ƒа / 0 Ч Ќет" << std::endl;
 	std::cout << "¬аш выбор: ";
-	MENU decision = (MENU)GetInput<int>();
+	auto decision = static_cast<Menu>(GetInput<int>());
 	while (!RightMenuChoice(decision)) {
-		decision = (MENU)GetInput<int>();
+		decision = static_cast<Menu>(GetInput<int>());
 	}
 	return decision;
 }
 
-MENU OutputFileAsk(void) {
+Menu OutputFileAsk(void) {
 	std::cout << "∆елаете сохранить результат в файл?" << std::endl;
 	std::cout << "1 Ч ƒа / 0 Ч Ќет" << std::endl;
 	std::cout << "¬аш выбор: ";
-	MENU decision = (MENU)GetInput<int>();
+	auto decision = static_cast<Menu>(GetInput<int>());
 	while (!RightMenuChoice(decision)) {
-		decision = (MENU)GetInput<int>();
+		decision = static_cast<Menu>(GetInput<int>());
 	}
 	return decision;
 }
 
-MENU RewriteAsk(std::string path) {
+Menu RewriteAsk(std::string path) {
 	std::ifstream checkFile;
 	checkFile.open(path);
-	MENU decision = MENU::NO;
+	auto decision = Menu::NO;
 	if (checkFile.is_open()) {
 		std::cout << "‘айл с таким именем уже существует!" << std::endl;
 		std::cout << "„то вы желаете сделать с файлом?" << std::endl;
 		std::cout << "1 Ч —оздать новый / 0 Ч ѕерезаписать существующий" << std::endl;
 		std::cout << "¬аш выбор: ";
-		decision = (MENU)GetInput<int>();
+		decision = static_cast<Menu>(GetInput<int>());
 		while (!RightMenuChoice(decision)) {
-			decision = (MENU)GetInput<int>();
+			decision = static_cast<Menu>(GetInput<int>());
 		}
 		checkFile.close();
 		return decision;
@@ -103,13 +103,13 @@ MENU RewriteAsk(std::string path) {
 	}
 }
 
-MENU RepeatAsk(void) {
+Menu RepeatAsk(void) {
 	std::cout << "∆елаете ли вы повторно выполнить программу?" << std::endl;
 	std::cout << "1 Ч ƒа / 0 Ч Ќет" << std::endl;
 	std::cout << "¬аш выбор: ";
-	MENU decision = (MENU)GetInput<int>();
+	auto decision = static_cast<Menu>(GetInput<int>());
 	while (!RightMenuChoice(decision)) {
-		decision = (MENU)GetInput<int>();
+		decision = static_cast<Menu>(GetInput<int>());
 	}
 	return decision;
 }
