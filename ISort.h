@@ -8,6 +8,8 @@
 
 class ISort {
 protected:
+	int m_compareCounter;
+	int m_switchCounter;
 	~ISort() = default;
 	virtual void SortMatrix(Matrix &matrix) = 0;
 	virtual int GetSwitches(void) = 0;
@@ -15,8 +17,6 @@ protected:
 };
 
 class BubbleSort : public ISort {
-	int m_compareCounter;
-	int m_switchCounter;
 public:
 	virtual ~BubbleSort() = default;
 	BubbleSort();
@@ -27,8 +27,6 @@ public:
 };
 
 class SelectionSort : public ISort {
-	int m_compareCounter;
-	int m_switchCounter;
 public:
 	virtual ~SelectionSort() = default;
 	SelectionSort();
@@ -39,8 +37,6 @@ public:
 };
 
 class InsertionSort : public ISort {
-	int m_compareCounter;
-	int m_switchCounter;
 public:
 	virtual ~InsertionSort() = default;
 	InsertionSort();
@@ -51,8 +47,6 @@ public:
 };
 
 class ShellSort : public ISort {
-	int m_compareCounter;
-	int m_switchCounter;
 public:
 	virtual ~ShellSort() = default;
 	ShellSort();
@@ -63,8 +57,6 @@ public:
 };
 
 class QuickSort : public ISort {
-	int m_compareCounter;
-	int m_switchCounter;
 public:
 	virtual ~QuickSort() = default;
 	QuickSort();
