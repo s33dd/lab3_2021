@@ -3,7 +3,7 @@
 void ManualInput::Input(Matrix &matrix) const {
 	for (int i = 0; i < matrix.m_matrixRows; i++) {
 		for (int j = 0; j < matrix.m_matrixColumns; j++) {
-			std::cout << "Введите элемент матрицы:" << std::endl;
+			std::cout << "Введите элемент матрицы в " << i + 1 << " строке " << j + 1 << " столбце: ";
 			matrix.m_matrix[i][j] = GetInput<int>();
 		}
 	}

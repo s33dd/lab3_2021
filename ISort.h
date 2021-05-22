@@ -10,6 +10,7 @@ class ISort {
 protected:
 	int m_compareCounter;
 	int m_switchCounter;
+	ISort();
 	~ISort() = default;
 	virtual void SortMatrix(Matrix &matrix) = 0;
 	virtual int GetSwitches(void) = 0;

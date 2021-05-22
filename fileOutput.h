@@ -16,4 +16,3 @@ public:
 };
 
 #endif // !FILEOUTPUT_H
-

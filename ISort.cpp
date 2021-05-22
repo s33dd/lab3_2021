@@ -1,28 +1,39 @@
 #include "ISort.h"
 
+ISort::ISort() {
+	m_switchCounter = 0;
+	m_compareCounter = 0;
+}
+
 BubbleSort::BubbleSort() {
 	m_compareCounter = 0;
 	m_switchCounter = 0;
 }
 
-void BubbleSort::SortMatrix(Matrix &matrix) {
+void BubbleSort::SortMatrix(Matrix& matrix) {
 	int temp = 0;
 	m_compareCounter = 0;
 	m_switchCounter = 0;
 
-	for (m_compareCounter = 0; m_compareCounter < (matrix.m_matrixColumns * matrix.m_matrixRows - 1); m_compareCounter++) {
+	for (int n = 0; n < (matrix.m_matrixColumns * matrix.m_matrixRows); n++) {
+		bool switched = false;
 		for (int j = 0; j < matrix.m_matrixColumns; j++) {
 			for (int i = 0; i < matrix.m_matrixRows; i++) {
-				if (i == matrix.m_matrixRows - 1) {
+				if(i == matrix.m_matrixRows - 1) {
 					continue;
 				}
+				m_compareCounter++;
 				if (matrix.m_matrix[i][j] < matrix.m_matrix[i + 1][j]) {
 					m_switchCounter++;
+					switched = true;
 					temp = matrix.m_matrix[i + 1][j];
 					matrix.m_matrix[i + 1][j] = matrix.m_matrix[i][j];
 					matrix.m_matrix[i][j] = temp;
 				}
 			}
+		}
+		if (!switched) {
+			break;
 		}
 	}
 }
@@ -35,22 +46,26 @@ void BubbleSort::SortNumber(Matrix &matrix) {
 		for (int j = 0; j < matrix.m_matrixColumns; j++) {
 			number = std::to_string(abs(matrix.m_matrix[i][j]));
 			__int64 digits = (__int64)number.length();
-			for (__int64 k = 0; k < digits; k++) {
-				if (k == digits - 1) {
-					continue;
+			for (__int64 k = digits - 1; k > 0; k--) {
+				bool switched = false;
+				for (__int64 n = 0; n < k; n++) {
+					m_compareCounter++;
+					if (number[n] > number[n + 1]) {
+						temp = number[n];
+						number[n] = number[n + 1];
+						number[n + 1] = temp;
+						m_switchCounter++;
+						switched = true;
+						if (matrix.m_matrix[i][j] < 0) {
+							matrix.m_matrix[i][j] = -stoi(number);
+						}
+						else {
+							matrix.m_matrix[i][j] = stoi(number);
+						}
+					}
 				}
-				m_compareCounter++;
-				if (number[k] > number[k + 1]) {
-					temp = number[k];
-					number[k] = number[k + 1];
-					number[k + 1] = temp;
-					m_switchCounter++;
-					if (matrix.m_matrix[i][j] < 0) {
-						matrix.m_matrix[i][j] = -stoi(number);
-					}
-					else {
-						matrix.m_matrix[i][j] = stoi(number);
-					}
+				if(!switched) {
+					break;
 				}
 			}
 		}
